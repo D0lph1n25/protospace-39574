@@ -26,8 +26,10 @@
 
 ### Association
 
-- has_many :comments
 - belongs_to :users
+- belongs_to :prototypes
+
+
 
 ## prototypesテーブル
 
@@ -36,10 +38,9 @@
 | title               | string     | null: false  |
 | catch_copy          | text       | null: false  |
 | concept             | text       | null: false  |
-| user                | references | null: false, 
-foreign_key: true  |
+| user                | references | null: false,foreign_key: true  |
 
 ### Association
 
+- has_many :comments
 - belongs_to :users
-- belongs_to :prototypes

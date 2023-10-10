@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  <div class="mornig">こんにちは
+    <%=link_to "#{current_user.name}さん", user_path(current_user)  %>
+  </div>
+<% end %>
+<% @prototypes.each do |prototype| %>
+    <%= render partial: "prototype" , locals: {prototype: prototype}%>
+<% end %>

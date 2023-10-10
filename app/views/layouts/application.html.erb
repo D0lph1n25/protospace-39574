@@ -11,6 +11,29 @@
   </head>
 
   <body>
+    <div class="header">
+      <div class="inner">
+        <div class="nav">
+          <div class="logo">
+            <%= link_to (image_tag'logo.png'), root_path %>
+          </div>
+          <% if user_signed_in? %>
+            <div class="btn">
+              <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } , class: "nav__btn" %>
+              <%= link_to 'New Proto', new_prototype_path, class: "nav__logout" %>
+            </div>
+          <% else %>
+             <div class="btn">
+                <%= link_to 'ログイン', new_user_session_path, class: "nav__btn" %>
+                <%= link_to '新規登録', new_user_registration_path, class: "nav__logout" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
     <%= yield %>
+    <div class="footer">
+      <h4 class="copyright">Copyright © PROTO SPACE All rights reserved.</h4>
+    </div>
   </body>
 </html>
