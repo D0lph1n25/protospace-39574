@@ -3,6 +3,8 @@
     <%=link_to "#{current_user.name}さん", user_path(current_user)  %>
   </div>
 <% end %>
-<% @prototypes.each do |prototype| %>
-    <%= render partial: "prototype" , locals: {prototype: prototype}%>
-<% end %>
+<div class="card__wrapper">
+  <% @prototypes.each do |prototype|  %>
+      <%= render partial: "prototype" , locals: {prototype: prototype}%>
+  <% end %>
+</div>
