@@ -1,6 +1,6 @@
 class PrototypesController < ApplicationController
-  before_action :find_params, only: [:show,:edit,:update]
-  before_action :authenticate_user!, only:[:new,:destroy]
+  before_action :find_params, only: [:show,:edit,:update,:destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :move_to_index,only: [:edit, :update, :destroy]
 
 
@@ -13,7 +13,8 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    if  Prototype.create(prototype_params)
+    @prototype = Prototype.new(prototype_params)
+    if @prototype.save
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
@@ -37,8 +38,7 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    prototype = Prototype.find(params[:id])
-    prototype.destroy
+    @prototype.destroy
     redirect_to root_path
   end
 
